@@ -1,22 +1,21 @@
-default: slides
+HANDOUTS:=$(patsubst %.md,%_handout.pdf,$(wildcard [!R][!E][!A][!D]*.md))
+SLIDES:=$(patsubst %.md,%_slides.pdf,$(wildcard [!R][!E][!A][!D]*.md))
 
-all: slides handout
+DO_PANDOC=pandoc --filter pandoc-citeproc -o
 
-SOURCE=ds_rev_edu
+all: handouts slides
 
-# Need gpp for conditional stuff
-# "brew install gpp" on macOS
+handouts: $(HANDOUTS)
 
-slides: $(SOURCE).md
-	gpp -H $(SOURCE).md | pandoc \
-	    --filter pandoc-citeproc \
-	    -t beamer \
-	    -o $(SOURCE)_slides.pdf
+slides: $(SLIDES)
 
-handout: $(SOURCE).md
-	gpp -H -DHANDOUT=1 $(SOURCE).md | pandoc \
-	    --filter pandoc-citeproc \
-	    -o $(SOURCE)_handout.pdf
+%_slides.pdf: %.md
+	# No references, beamer output.
+	gpp -H $< | $(DO_PANDOC) $@ -t beamer
+
+%_handout.pdf: %.md
+	# References at end, standard pdf output.
+	gpp -H -DHANDOUT=1 $< | $(DO_PANDOC) $@
 
 clean:
-	rm *.pdf *.html
+	rm *.pdf
