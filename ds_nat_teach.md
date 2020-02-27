@@ -173,13 +173,19 @@ Key stage 1 (5-7 year olds).
 # Problems for a national strategy
 
 * Little experience of undergraduate or post-graduate education
-* [Data science and the hype
-    cycle](http://asterisk.dynevor.org/after-data-science.html)
 * [Weak culture of open-source
     contribution](http://asterisk.dynevor.org/who-is-building-the-foundations.html).
 * Little room for substantial cross-discipline courses within most degrees.
 * Emphasis on grant money and REF metrics tends to discourage cross-discipline
     collaboration.
+
+# Data science and the hype cycle
+
+![](images/Gartner_Hype_Cycle.svg)
+
+[Data science and the hype
+cycle](http://asterisk.dynevor.org/after-data-science.html).  Graphic by
+Jeremykemp at English Wikipedia CC BY-SA 3.0
 
 # Options?
 
